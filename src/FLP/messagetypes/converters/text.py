@@ -6,6 +6,10 @@ Created on 13 May 2021
 
 from .base import Converter
 
+def decodeASCII(d):
+    decoder = lambda d : chr(d) if d>30 and d<128 else '.'
+    return ''.join([decoder(c) for c in d])
+
 
 class String8Converter(Converter):
     
@@ -13,7 +17,7 @@ class String8Converter(Converter):
         super().__init__(separator='')
         
     def process(self,d):
-        return chr(d) if d>30 and 3<128 else '.'
+        return chr(d) if d>30 and d<128 else '.'
 
 '''
 class String16Converter(String8Converter):
@@ -37,7 +41,12 @@ class String16Converter(Converter):
         
         
     def __call__(self,data):
-        return data.decode('utf16')
+        try:
+            return data.decode('utf16')
+        except:
+            s=decodeASCII(data)
+            if len(s)==0 : return ''
+            return s[0:-1:2]
 
 
     

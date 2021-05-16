@@ -4,7 +4,7 @@ Created on 9 May 2021
 @author: julianporter
 '''
 from .core import BaseMessage
-from FLP.messages.converters import WORDConv 
+from .converters import WORDConv  
 
 class WORD(BaseMessage):
     

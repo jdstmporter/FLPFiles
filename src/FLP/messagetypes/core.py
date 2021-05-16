@@ -5,7 +5,7 @@ Created on 9 May 2021
 '''
 
 from enum import Enum
-from FLP.messages.converters import STR8Conv, SAFEConv
+from .converters import STR8Conv,SAFEConv   
 
     
 

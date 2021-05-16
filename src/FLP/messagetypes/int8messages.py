@@ -1,5 +1,5 @@
 from .core import BaseMessage 
-from FLP.messages.converters import BYTEConv 
+from .converters import BYTEConv
 
 class BYTE(BaseMessage):
     

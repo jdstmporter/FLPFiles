@@ -4,12 +4,12 @@ Created on 15 Sep 2019
 @author: julianporter
 '''
 
-from .chunk import Chunk
+from .chunk import FLPChunk
 from .event import Event
 import traceback
            
 
-class FLPTrack(Chunk):
+class FLPTrack(FLPChunk):
     
     def __init__(self,data):
         super().__init__(data)
@@ -17,13 +17,18 @@ class FLPTrack(Chunk):
            
     def parse(self):
         self.buffer=self.data
+        event=None
         try:
             while len(self.buffer)>0 :
+                event=None
                 event=Event(self.buffer)
-                length = len(event)
+                length = event.length
                 self.events.append(event)
                 self.buffer=self.buffer[length:]
         except Exception as e:
+            if event is not None:
+                print(f'Event is {event}')
+                print(f'Length is {event.length}')
             print(f'Error : {e}')
             traceback.print_exc()
             pass

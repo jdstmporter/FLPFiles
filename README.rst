@@ -53,10 +53,7 @@ If *self* is an **FLP.FLPFile** instance then
 
         * - *self*.division
           - uint16
-          - Time quantum of the MIDI data encoded in the file (or ``None`` if the ``parse`` method has not yet been invoked).  Interpretation depends on the value: 
-
-            - `< 32768` : equals number of ticks per quarter-note; often equal to ``960``
-            - `>=32786` : number of subdivisions of a second as defined in the `SMTPE Standard`_ and on pages 116- of the `MIDI Specification v1.0`_.  Equals `32768 + 256 f + t`  where `f` identifies one of the standard MIDI time code formats, and signifies the number of frames per second, while `f` is the numbef of subdivisions within a frame (common values are `4`, `8`, `10`, `80` and `100`).
+          - Time quantum of the Fl Studio data encoded in the file (or ``None`` if the ``parse`` method has not yet been invoked).  
 
 
 Class **FLP.FLPTrack**
@@ -113,19 +110,16 @@ Methods
 Class **FLP.chunks.Event**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Represents a general event as found in SMF files, or streams of MIDI messages.  Specific kinds of event are represented by subclasses (for which, see below).
+Represents a general event as found in FL Project files.  Specific kinds of event are represented by subclasses (for which, see below).
 
 Constructor
 """""""""""
-    **FLP.chunks.Event**.__init__(*self*, ``time``, ``buffer``)
+    **FLP.chunks.Event**.__init__(*self*, ``buffer``)
 
     Arguments:
 
     .. list-table::
 
-      * - ``time`` 
-        - uint64 
-        - MIDI timestamp for the time of the event's occurrence, relative to some arbitrary zero.
       * -  ``buffer`` 
         -  binary string or array 
         -  bytes making up the event.
@@ -180,9 +174,47 @@ Included in the package is the following simple test script:
 
         parse(argv[1])  
 
-The first few lines of the output from applying this to a SMF file are as follows: ::
+The first few lines of the output from applying this to a FL Studio Project file are as follows: ::
 
- 
+        Header is Format 0x0 nTracks 0x2 division 0x60
+        Buffer32 has length 4
+        Format 0x0 nTracks 0x2 division 0x60
+	       Track 0 of length 0
+        Track 0:
+        VAR 199(Version) = 20.8.3.2304.
+        DWORD 159(Unknown) = 589824
+        BYTE 28(Registered) = 1 (01)
+        BYTE 37(Unknown) = 1
+        VAR 200(RegName) = \@Fz0b879vDC>?CD;;
+        DWORD 156(FineTempo) = 3235119360 (C0D40100)
+        WORD 67(CurrentPatNum) = 256 (0100)
+        BYTE 9(LoopActive) = 1 (01)
+        BYTE 11(Shuffle) = 0 (00)       
+        WORD 80(MainPitch) = 0 (0000)
+        BYTE 17(Numerator) = 4 (04)
+        BYTE 18(Denominator) = 4 (04)
+        BYTE 35(Unknown) = 1
+        BYTE 23(PanVolumeTab) = 0 (00)
+        BYTE 30(TruncateClipNotes) = 1 (01)
+        BYTE 10(ShowInfo) = 0 (00)
+        VAR 194(Title) = 
+        VAR 206(Genre) = 
+        VAR 207(Author) = 
+        VAR 202(ProjDataPath) = 
+        VAR 195(Comment) = 
+        VAR 237(ProjectTime) = 10 DF D7 ED 3B A4 E5 40 00 00 00 E0 C9 BE 32 3F
+        VAR 231(ChanGroupName) = Audio
+        VAR 231(ChanGroupName) = Unsorted
+        DWORD 146(CurrentFilterNum) = 0 (00000000)
+        VAR 216(CtrlRecChan) = 
+        VAR 226(RemoteCtrl_MIDI) = 01 00 00 00 00 00 00 00 01 90 FF 0F 04 00 00 00 D5 01 00 00
+        VAR 226(RemoteCtrl_MIDI) = FD 00 00 00 00 00 00 00 80 90 FF 0F 04 00 00 00 D5 01 00 00
+        VAR 226(RemoteCtrl_MIDI) = FF 00 00 00 FF 00 00 00 04 00 FF 0F 04 00 00 00 00 FE FF FF
+        WORD 64(NewChan) = 0 (0000)
+        BYTE 21(ChannelType) = 0 (00)
+        VAR 201(DefPluginName) = 
+        VAR 212(NewPlugin) = 00 00 00 00 00 00 00 00 FF FF FF FF 00 00 00 00 50 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 C2 00 00 00 16 01 00 00 00 00 00 00 00 00 00 00
+        VAR 203(PluginName) = Sampler
 
 
 Requirements

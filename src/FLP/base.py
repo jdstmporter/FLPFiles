@@ -31,7 +31,7 @@ class FLPParserError(Exception):
     def __str__(self):
         return self.message
     
-        
+
 
 class FLPBase(object):
     
@@ -69,7 +69,6 @@ class FLPBase(object):
     
     @classmethod
     def getInt32(cls,b):
-        print(f'Buffer32 has length {len(b)}')
         n1=cls.getInt16(b);
         n2=cls.getInt16(b[2:]);
         return 65536*n2 + n1
