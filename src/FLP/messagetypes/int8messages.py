@@ -1,5 +1,5 @@
 from .core import BaseMessage 
-from .converters import BYTEConv
+from .text import BYTEConv
 
 class BYTE(BaseMessage):
     

@@ -4,7 +4,11 @@ Created on 9 May 2021
 @author: julianporter
 '''
 from .core import BaseMessage
-from .converters import WORDConv  
+from .text import WORDConv 
+
+
+  
+ 
 
 class WORD(BaseMessage):
     

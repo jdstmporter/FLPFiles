@@ -18,6 +18,7 @@ setup(
     long_description=long_description,
     author='Julian Porter',
     author_email='julian@porternet.org',
+    url='https://github.com/jdstmporter/FLPFiles.git',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -31,10 +32,9 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-         'Programming Language :: Python :: 3.9',
-        f'Topic :: Multimedia :: Sound/Audio :: FL Studio'
+         'Programming Language :: Python :: 3.9'
     ],
-    keywords=keyword,
+    keywords=['FL Studio Project File','FLP file'],
     packages=packages,
     python_requires='>=3.6, <4',
     package_dir={

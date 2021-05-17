@@ -1,6 +1,12 @@
+'''
+Created on 17 May 2021
+
+@author: julianporter
+'''
+
 from .numeric import HexConverter,IntConverter 
 from .text import String8Converter,String16Converter
-from .base import Converter 
+
 
    
 

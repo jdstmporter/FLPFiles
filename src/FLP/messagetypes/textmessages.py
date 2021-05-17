@@ -5,7 +5,7 @@ Created on 9 May 2021
 '''
 from .core import BaseMessage
 from enum import Enum
-from .converters import HEXConv,STR8Conv,STR16Conv
+from .text import HEXConv,STR8Conv,STR16Conv
 
 class Display(Enum):
     

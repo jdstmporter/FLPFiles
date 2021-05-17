@@ -5,7 +5,7 @@ Created on 9 May 2021
 '''
 
 from enum import Enum
-from .converters import STR8Conv,SAFEConv   
+from .text import STR8Conv,SAFEConv   
 
     
 
